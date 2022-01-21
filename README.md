@@ -1,3 +1,26 @@
+# How to install this plugin
+
+Install Artifact Manager on S3 plugin COS compatiable verison using `.hpi` file under `target` file. 
+
+## From the web UI
+Navigate to the Manage Jenkins > Manage Plugins page in the web UI.
+Click on the Advanced tab.
+Choose the .hpi file from your system or enter a URL to the .hpi file under the Deploy Plugin section.
+Deploy the plugin file.
+
+![](images/plugin-manager-upload.png)
+
+Once a plugin file has been uploaded, the Jenkins controller must be manually restarted in order for the changes to take effect.
+
+## On the controller
+The administrator can manually place the .hpi file in a specific location on the file system.
+
+Copy the downloaded `.hpi` file into the JENKINS_HOME/plugins directory on the Jenkins controller (for example, on Debian systems JENKINS_HOME is generally /var/lib/jenkins).
+
+The controller must be restarted before the plugin is loaded and made available in the Jenkins environment.
+
+# Below is the introduction for original plugin:
+
 # Artifact Manager on S3 plugin
 
 Artifact Manager on S3 plugin is an Artifact Manager that allow you to store your artifacts into a S3 Bucket on Amazon.
