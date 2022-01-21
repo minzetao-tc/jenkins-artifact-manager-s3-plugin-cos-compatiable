@@ -2,7 +2,7 @@
 
 ## Step one - generate the `.hpi` file
 Download all the files in this repository to your local, and use command `mvn install` to create the `.hpi` file. This will create the file `./target/pluginname.hpi` that you can deploy to Jenkins.
-
+<br/><br/>
 ## Step two - load `.hpi` file to Jenkins
 ### From the web UI
 Navigate to the `Manage Jenkins > Manage Plugins` page in the web UI.
@@ -20,7 +20,7 @@ The administrator can manually place the `.hpi` file in a specific location on t
 Copy the downloaded `.hpi` file into the `JENKINS_HOME/plugins` directory on the Jenkins controller (for example, on Debian systems `JENKINS_HOME` is generally `/var/lib/jenkins`).
 
 The controller must be restarted before the plugin is loaded and made available in the Jenkins environment.
-
+<br/><br/>
 ## Step three - plugin configuration
 Once the plugin is installed, use it as the original plugin except you need to change the following configurations:
 - Enter the custom endpoint for your COS bucket (for example, if you bucket is in Silicon Valley, you should enter `cos.na-siliconvalley.myqcloud.com`)
