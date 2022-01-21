@@ -1,0 +1,6 @@
+io.jenkins.plugins.artifact_manager_jclouds.BlobStoreProvider
+io.jenkins.plugins.artifact_manager_jclouds.BlobStoreProviderDescriptor
+io.jenkins.plugins.artifact_manager_jclouds.JCloudsArtifactManager
+io.jenkins.plugins.artifact_manager_jclouds.JCloudsArtifactManagerFactory
+io.jenkins.plugins.artifact_manager_jclouds.JCloudsVirtualFile
+io.jenkins.plugins.artifact_manager_jclouds.s3.S3BlobStore
