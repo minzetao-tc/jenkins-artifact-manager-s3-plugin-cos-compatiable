@@ -19,9 +19,10 @@ Copy the downloaded `.hpi` file into the JENKINS_HOME/plugins directory on the J
 
 The controller must be restarted before the plugin is loaded and made available in the Jenkins environment.
 
+
 # Below is the introduction for original plugin:
 
-# Artifact Manager on S3 plugin
+## Artifact Manager on S3 plugin
 
 Artifact Manager on S3 plugin is an Artifact Manager that allow you to store your artifacts into a S3 Bucket on Amazon.
 The use of this S3 Bucket as a artifact storage is transparent to Jenkins and your jobs, it works like the default 
@@ -30,7 +31,7 @@ Artifact Manager.
 Artifact manager implementation for Amazon S3, currently using the jClouds library.
 [wiki](https://wiki.jenkins.io/display/JENKINS/Artifact+Manager+S3+Plugin)
 
-# Prerequisites
+## Prerequisites
 
 First of all, you will need a Amazon account, this Amazon account should have permissions over the S3 Bucket that 
 you want to use as artifact storage.
@@ -71,7 +72,7 @@ This is an example policy
 }
 ```
 
-# Configuration
+## Configuration
 
 In order to configure the plugin on Jenkins, you have to go to Manage Jenkins/Configure System to 
 the `Artifact Management for Builds` section, there you have to select the Cloud Provider `Amazon S3`.
@@ -128,14 +129,14 @@ For Google Cloud Storage:
 Finally the "Create S3 Bucket from configuration" button allow you to create the bucket if it does not exist 
 and the AWS credentials configured have permission to create a S3 Bucket.
 
-# How to use  Artifact Manager on S3 plugin
+## How to use  Artifact Manager on S3 plugin
 
 Artifact Manager on S3 plugin is transparently used by the Jenkins Artifact system, so as other Artifacts Managers, 
 you only have to use the Artifact Step to archive/unarchive, and the stash/unstash step, let's see how it works. 
 We have also to mention here, the [Copy Artifacts plugin](https://plugins.jenkins.io/copyartifact) that allow you 
 to download artifacts from a finished build.
 
-## Pipeline job
+### Pipeline job
 
 Artifact Manager on S3 plugin can be use in a [Pipeline](https://jenkins.io/doc/book/pipeline/) job, 
 you have to use the `archiveArtifacts` step to archive artifacts in the S3 Bucket, for more details you can check 
@@ -188,32 +189,32 @@ node() {
 }
 ```
 
-## FreeStyle job
+### FreeStyle job
 
 On FreeStyle jobs, you can archive artifacts by using a `Post-build Action` of type `Archive the Artifacts`, 
 this step would use the Artifact Manager on S3 plugin to store the artifacts into the S3 Bucket.
 
 ![](images/fsj-step-archive.png)
 
-# Manage Artifacts
+## Manage Artifacts
 
 The default behaviour of the plugin it is not delete artifact from the S3 Bucket, so the artifacts storaged 
 on the S3 Bucket would be in the S3 bucket even do you remove the build from Jenkins. 
 If you want to change this behaviour you should define a couple of JVM properties.
 
-## Delete Artifacts
+### Delete Artifacts
 
 In order to delete artifacts on the S3 Bucket, you would have to add the property 
 `-Dio.jenkins.plugins.artifact_manager_jclouds.s3.S3BlobStoreConfig.deleteArtifacts=true` to your Jenkins JVM properties 
 , if it is not set the artifacts will not be deleted from S3 Bucket when the corresponding build is deleted.
 
-## Delete Stash
+### Delete Stash
 
 In order to delete stashes on the S3 Bucket, you would have to add the property 
 `-Dio.jenkins.plugins.artifact_manager_jclouds.s3.S3BlobStoreConfig.deleteStashes=true`  to your Jenkins JVM properties
 , if it is not set the stash will not be deleted from S3 when the corresponding build is deleted.
 
-# AWS Credentials
+## AWS Credentials
 
 Artifact Manager on S3 plugin needs an AWS credentials in order to access to the S3 Bucket, you can select one on the
 configuration page. If you do not select any AWS credential and keep the "" dropdown on the option "IAM instance Profile/user AWS configuration"
@@ -233,7 +234,7 @@ the token duration is always one hour, this parameter does not change the durati
 
 # Extending Artifact Manager on S3 plugin
 
-## Testing
+### Testing
 
 Pick an AWS profile and region, then create a scratch bucket and choose a subdirectory within it for testing.
 Add to your `~/.m2/settings.xml`:
@@ -312,7 +313,7 @@ Or to just see HTTP traffic:
 java -jar jenkins-cli.jar -s http://localhost:8080/jenkins/ tail-log org.jclouds.rest.internal.InvokeHttpMethod -l FINE
 ```
 
-# Troubleshooting
+## Troubleshooting
 
 ## No valid session credentials
 
@@ -357,7 +358,7 @@ java.io.IOException: No valid session credentials
 
 Check the environment variable AWS_PROFILE, it should point to a profile with aws_session_token in `~/aws/credentials`
 
-## Must provide an explicit region in the builder or setup environment to supply a region
+### Must provide an explicit region in the builder or setup environment to supply a region
 
 In some cases the region should be specified, set the environment variable AWS_REGION to the correct region.
 
@@ -382,7 +383,7 @@ com.amazonaws.SdkClientException: Unable to find a region via the region provide
 	at java.lang.Thread.run(Thread.java:748)
 ```
 
-## The provided token has expired
+### The provided token has expired
 
 When the AWS token is expired you will see the following error in logs, you have to refresh your AWS token.
 
@@ -421,7 +422,7 @@ org.jclouds.aws.AWSResponseException: request GET https://my-bucket.s3.amazonaws
  
 ```
 
-## The region 'YYYY' is wrong; expecting 'XXXX'
+### The region 'YYYY' is wrong; expecting 'XXXX'
 
 If the AWS login region is different than the S3 Bucket region, you would see the following errors in logs, 
 to fix it, you have to force the S3 bucket region on the Plugin configuration to the `S3 Bucket region`.
@@ -459,7 +460,7 @@ hudson.remoting.ProxyException: org.jclouds.aws.AWSResponseException: request GE
 	at java.lang.Thread.run(Thread.java:748)
 ```
 
-## Empty S3 Bucket name
+### Empty S3 Bucket name
 
 The configuration will warning you about you are trying to save a empty bucket name even do you save the configuration, 
 and you try to archive artifacts, you would see the following errors. To fix it you have to set a proper S3 Bucket name.
@@ -525,7 +526,7 @@ Caused by: java.lang.IllegalArgumentException: Object '' doesn't match S3 bucket
         ... 130 more
 ```
 
-## The specified bucket does not exist
+### The specified bucket does not exist
 
 If you set an unexistent S3 Bucket you would see the following errors in logs, 
 to fix it set a proper S3 Bucket name in the Plugin configuration.
@@ -578,7 +579,7 @@ Caused by: org.jclouds.blobstore.ContainerNotFoundException: borken.s3-xx-xxxx-x
         ... 116 more
 ```
 
-## Network outages
+### Network outages
 
 The following message of error appears when the host it is not accessible meanwhile we are sending/getting data from S3.
 
@@ -652,7 +653,7 @@ WARNING: null
 12:01:06 Retrying upload after: java.net.SocketException: Broken pipe (Write failed)
 ```
 
-## Member must have length greater than or equal to 20
+### Member must have length greater than or equal to 20
 
 If you use an invalid IAM Role ID on your credentials, you would see the following error, 
 you have to set a proper ARN specifying the IAM role to assume. The format should be something like: 
@@ -694,7 +695,7 @@ Caused by: com.amazonaws.services.securitytoken.model.AWSSecurityTokenServiceExc
 
 ```
 
-## User: arn:aws:iam::XXXXXX:user/people/myUser is not authorized to perform: sts:AssumeRole on resource: arn:aws:iam::XXXXXXX:role/my-role
+### User: arn:aws:iam::XXXXXX:user/people/myUser is not authorized to perform: sts:AssumeRole on resource: arn:aws:iam::XXXXXXX:role/my-role
 
 If you see the following error, your user would not assume the IAM Role that you set on your Jenkins AWS Credentials. 
 Check that your user can assume that IAM Role in AWS Console.
@@ -741,7 +742,7 @@ Caused by: com.amazonaws.services.securitytoken.model.AWSSecurityTokenServiceExc
 
 ```
 
-## Unable to find a region via the region provider chain. Must provide an explicit region in the builder or setup environment to supply a region. 
+### Unable to find a region via the region provider chain. Must provide an explicit region in the builder or setup environment to supply a region. 
 
 There is no user AWS configuration (~/.aws), and there is not AWS credential configured. You need a user AWS configuration, 
 or you have to configure an AWS credential in Jenkins. 
@@ -794,82 +795,4 @@ java.lang.NullPointerException
 	at java.lang.Thread.run(Thread.java:748)
 ```
 
-# Changelog
 
-## 1.7 and newer
-
-See [GitHub releases](https://github.com/jenkinsci/artifact-manager-s3-plugin/releases).
-
-## 1.6 (2019-05-23)
-
--   Extend 1.5’s flush fix to some error-handling cases.
-
-## 1.5 (2019-05-06)
-
--   Properly flush listeners from all remote callables
-    ([commit](https://github.com/jenkinsci/artifact-manager-s3-plugin/pull/92/commits/9da949541b8a9c5cb36a290fa8a4f91f92132b6f){.external-link})
--   [PR
-    \#92](https://github.com/jenkinsci/artifact-manager-s3-plugin/pull/92){.external-link}
-    - Internal: Update dependencies to support testing of the plugin
-    with Java 11
-
-## 1.4 (2019-04-04)
-
--   Following up metadata changes in 1.3 to make the plugin work on
-    Java 11. Now requires Jenkins 2.164.x or newer.
-
-## 1.3 (2019-03-27)
-
--   Flush a message printed from the agent side, to work better
-    with [JEP-210](https://jenkins.io/jep/210){.external-link}.
--   Metadata changes for `plugin-compat-tester`.
-
-## 1.2 (2018-11-06)
-
--   [
-    JENKINS-50591](https://issues.jenkins-ci.org/browse/JENKINS-50591){.jira-issue-key}
-    - Getting issue details... STATUS  /  [
-    JENKINS-52151](https://issues.jenkins-ci.org/browse/JENKINS-52151){.jira-issue-key}
-    - Getting issue details... STATUS  Picking
-    up <https://jira.apache.org/jira/browse/JCLOUDS-1401> and <https://jira.apache.org/jira/browse/JCLOUDS-1433> to
-    address most problems with special characters in artifact names.
--   Added form validation for bucket location.
-
-## 1.1 (2018 Jul 17)
-
--   Using [AWS Global Configuration
-    Plugin](https://wiki.jenkins.io/display/JENKINS/AWS+Global+Configuration+Plugin)
-    for configuration.
--   [
-    JENKINS-52304](https://issues.jenkins-ci.org/browse/JENKINS-52304){.jira-issue-key}
-    - Getting issue details... STATUS
--   [
-    JENKINS-52361](https://issues.jenkins-ci.org/browse/JENKINS-52361){.jira-issue-key}
-    - Getting issue details... STATUS
--   test for  [
-    JENKINS-52151](https://issues.jenkins-ci.org/browse/JENKINS-52151){.jira-issue-key}
-    - Getting issue details... STATUS  and [
-    JENKINS-50591](https://issues.jenkins-ci.org/browse/JENKINS-50591){.jira-issue-key}
-    - Getting issue details... STATUS ; actual fix is pending a new
-    jclouds release
--   [
-    JENKINS-52254](https://issues.jenkins-ci.org/browse/JENKINS-52254){.jira-issue-key}
-    - Getting issue details... STATUS
--   [
-    JENKINS-52250](https://issues.jenkins-ci.org/browse/JENKINS-52250){.jira-issue-key}
-    - Getting issue details... STATUS
--   Ability to create the S3 bucket from the configuration page.
-
-## 1.0 (2018 Jun 26)
-
-No code changes since beta 2, only metadata.
-
-## 1.0-beta-2 (2018 Jun 21)
-
--   [
-    JENKINS-51396](https://issues.jenkins-ci.org/browse/JENKINS-51396){.jira-issue-key}
-    - Getting issue details... STATUS
-
-## 1.0-beta-1 (2018 Jun 19)
-
-Initial release to experimental update center.
