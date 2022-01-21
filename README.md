@@ -3,9 +3,9 @@
 Download all the files in this repository to your local, and use command `mvn install` to create the `.hpi` file. This will create the file `./target/pluginname.hpi` that you can deploy to Jenkins.
 
 ## From the web UI
-Navigate to the Manage Jenkins > Manage Plugins page in the web UI.
-Click on the Advanced tab.
-Choose the .hpi file from your system or enter a URL to the .hpi file under the Deploy Plugin section.
+Navigate to the `Manage Jenkins > Manage Plugins` page in the web UI.
+Click on the `Advanced` tab.
+Choose the `.hpi` file from your system or enter a URL to the `.hpi` file under the Deploy Plugin section.
 Deploy the plugin file.
 
 ![](images/plugin-manager-upload.png)
@@ -13,7 +13,7 @@ Deploy the plugin file.
 Once a plugin file has been uploaded, the Jenkins controller must be manually restarted in order for the changes to take effect.
 
 ## On the controller
-The administrator can manually place the .hpi file in a specific location on the file system.
+The administrator can manually place the `.hpi` file in a specific location on the file system.
 
 Copy the downloaded `.hpi` file into the JENKINS_HOME/plugins directory on the Jenkins controller (for example, on Debian systems JENKINS_HOME is generally /var/lib/jenkins).
 
