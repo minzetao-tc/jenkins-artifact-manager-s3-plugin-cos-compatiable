@@ -22,10 +22,10 @@ The controller must be restarted before the plugin is loaded and made available 
 ## Plugin Configuration
 Once the plugin is installed, use it as the original plugin except you need to change the following settings
 - Enter the custom endpoint for your COS bucket (for example, if you bucket is in Silicon Valley, you should enter `cos.na-siliconvalley.myqcloud.com`)
-  You can find the endpoint information [wiki](https://intl.cloud.tencent.com/document/product/436/6224).
+  You can find the endpoint information [here](https://intl.cloud.tencent.com/document/product/436/6224).
 - Enable `Disable Session Token` on the configuration.
 
-![](images/plugin-config.png)
+![](images/plugin-config1.png)
 
 <br/><br/>
 
