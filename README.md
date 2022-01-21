@@ -29,6 +29,8 @@ Once the plugin is installed, use it as the original plugin except you need to c
 
 ![](images/plugin-config1.png)
 
+If you successfully configure the plugin, you should see `success` when you click `Validate S3 Bucket configuration` button. 
+
 <br/><br/>
 
 # Below is the introduction for original plugin:
