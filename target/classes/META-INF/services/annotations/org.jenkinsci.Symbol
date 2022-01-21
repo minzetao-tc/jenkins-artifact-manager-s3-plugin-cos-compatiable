@@ -1,3 +1,0 @@
-io.jenkins.plugins.artifact_manager_jclouds.JCloudsArtifactManagerFactory$DescriptorImpl
-io.jenkins.plugins.artifact_manager_jclouds.s3.S3BlobStore$DescriptorImpl
-io.jenkins.plugins.artifact_manager_jclouds.s3.S3BlobStoreConfig
