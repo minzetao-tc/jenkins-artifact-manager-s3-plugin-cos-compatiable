@@ -20,7 +20,7 @@ Copy the downloaded `.hpi` file into the JENKINS_HOME/plugins directory on the J
 The controller must be restarted before the plugin is loaded and made available in the Jenkins environment.
 
 ## Plugin Configuration
-Once the plugin is installed, use it as the original plugin except you need to change the following settings
+Once the plugin is installed, use it as the original plugin except you need to change the following configurations:
 - Enter the custom endpoint for your COS bucket (for example, if you bucket is in Silicon Valley, you should enter `cos.na-siliconvalley.myqcloud.com`)
   You can find the endpoint information [here](https://intl.cloud.tencent.com/document/product/436/6224).
 - Enable `Disable Session Token` on the configuration.
