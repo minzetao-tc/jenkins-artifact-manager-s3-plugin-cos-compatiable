@@ -19,6 +19,11 @@ Copy the downloaded `.hpi` file into the JENKINS_HOME/plugins directory on the J
 
 The controller must be restarted before the plugin is loaded and made available in the Jenkins environment.
 
+##Plugin Configuration
+Once the plugin is installed, use it as the original plugin except you need to enable `Disable Session Token` on the configuration.
+
+![](images/plugin-config.png)
+
 <br/><br/>
 
 # Below is the introduction for original plugin:
