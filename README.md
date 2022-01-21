@@ -15,7 +15,7 @@ Once a plugin file has been uploaded, the Jenkins controller must be manually re
 ## On the controller
 The administrator can manually place the `.hpi` file in a specific location on the file system.
 
-Copy the downloaded `.hpi` file into the JENKINS_HOME/plugins directory on the Jenkins controller (for example, on Debian systems JENKINS_HOME is generally /var/lib/jenkins).
+Copy the downloaded `.hpi` file into the `JENKINS_HOME/plugins` directory on the Jenkins controller (for example, on Debian systems `JENKINS_HOME` is generally `/var/lib/jenkins`).
 
 The controller must be restarted before the plugin is loaded and made available in the Jenkins environment.
 
