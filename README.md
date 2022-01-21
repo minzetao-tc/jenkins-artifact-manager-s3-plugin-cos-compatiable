@@ -19,6 +19,8 @@ Copy the downloaded `.hpi` file into the JENKINS_HOME/plugins directory on the J
 
 The controller must be restarted before the plugin is loaded and made available in the Jenkins environment.
 
+<br/><br/>
+<br/><br/>
 
 # Below is the introduction for original plugin:
 
