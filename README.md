@@ -1,6 +1,6 @@
 # How to install this plugin
 
-Install Artifact Manager on S3 plugin COS compatiable verison using `.hpi` file under `target` file. 
+The `.hpi` file for Artifact Manager on S3 plugin COS compatiable verison is under folder `target`. In case the `.hpi` file failed to work, you can always use command `mvn install`. This will create the file `./target/pluginname.hpi` that you can deploy to Jenkins.
 
 ## From the web UI
 Navigate to the Manage Jenkins > Manage Plugins page in the web UI.
