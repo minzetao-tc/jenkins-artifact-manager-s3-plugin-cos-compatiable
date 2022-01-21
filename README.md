@@ -1,6 +1,6 @@
 # How to install this plugin
 
-First, you need to create the `.hpi` file, you can always use command `mvn install`. This will create the file `./target/pluginname.hpi` that you can deploy to Jenkins.
+Download all the files in this repository to your local, and use command `mvn install` to create the `.hpi` file. This will create the file `./target/pluginname.hpi` that you can deploy to Jenkins.
 
 ## From the web UI
 Navigate to the Manage Jenkins > Manage Plugins page in the web UI.
